@@ -36,7 +36,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
 
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
@@ -99,7 +99,8 @@ function cloneLayoutItem(layoutItem
     static: Boolean(layoutItem.static),
     // These can be null
     isDraggable: layoutItem.isDraggable,
-    isResizable: layoutItem.isResizable
+    isResizable: layoutItem.isResizable,
+    isCollidable: layoutItem.isCollidable
   };
 }
 /**
@@ -133,8 +134,8 @@ function collides(l1
 )
 /*: boolean*/
 {
-  return false;
-  if (l1.i === l2.i) return false; // same element
+  console.log('react-grid-layout', l1, l2);
+  if (l1.i === l2.i || l1.isCollidable || l2.isCollidable) return false; // same element
 
   if (l1.x + l1.w <= l2.x) return false; // l1 is left of l2
 
@@ -672,7 +673,7 @@ function synchronizeLayoutWithChildren(initialLayout
           validateLayout([g], "ReactGridLayout.children");
         }
 
-        layout[i] = cloneLayoutItem(_objectSpread({}, g, {
+        layout[i] = cloneLayoutItem(_objectSpread(_objectSpread({}, g), {}, {
           i: child.key
         }));
       } else {
