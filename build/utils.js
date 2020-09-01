@@ -134,7 +134,7 @@ function collides(l1
 )
 /*: boolean*/
 {
-  if (l1.i === l2.i || l1.isCollidable || l2.isCollidable) return false; // same element
+  return false; //if (l1.i === l2.i || l1.isCollidable || l2.isCollidable) return false; // same element
 
   if (l1.x + l1.w <= l2.x) return false; // l1 is left of l2
 
