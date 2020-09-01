@@ -40,7 +40,6 @@ type Props = {
   maxRows: number,
   isDraggable: boolean,
   isResizable: boolean,
-  isCollidable?: boolean,
   static?: boolean,
   useCSSTransforms?: boolean,
   usePercentages?: boolean,
@@ -137,7 +136,6 @@ export default class GridItem extends React.Component<Props, State> {
     // Flags
     isDraggable: PropTypes.bool.isRequired,
     isResizable: PropTypes.bool.isRequired,
-    isCollidable: PropTypes.bool,
     static: PropTypes.bool,
 
     // Use CSS transforms instead of top/left
