@@ -545,7 +545,6 @@ var ReactGridLayout = /*#__PURE__*/function (_React$Component) {
         rowHeight: rowHeight,
         isDraggable: false,
         isResizable: false,
-        isCollidable: false,
         useCSSTransforms: useCSSTransforms,
         transformScale: transformScale
       }, /*#__PURE__*/_react.default.createElement("div", null));
@@ -577,7 +576,6 @@ var ReactGridLayout = /*#__PURE__*/function (_React$Component) {
           maxRows = _this$props5.maxRows,
           isDraggable = _this$props5.isDraggable,
           isResizable = _this$props5.isResizable,
-          isCollidable = _this$props5.isCollidable,
           useCSSTransforms = _this$props5.useCSSTransforms,
           transformScale = _this$props5.transformScale,
           draggableCancel = _this$props5.draggableCancel,
@@ -605,7 +603,6 @@ var ReactGridLayout = /*#__PURE__*/function (_React$Component) {
         onResizeStop: this.onResizeStop,
         isDraggable: draggable,
         isResizable: resizable,
-        isCollidable: isCollidable,
         useCSSTransforms: useCSSTransforms && mounted,
         usePercentages: !mounted,
         transformScale: transformScale,
@@ -755,7 +752,6 @@ _defineProperty(ReactGridLayout, "propTypes", {
   //
   isDraggable: _propTypes.default.bool,
   isResizable: _propTypes.default.bool,
-  isCollidable: _propTypes.default.bool,
   // If true, grid items won't change position when being dragged over.
   preventCollision: _propTypes.default.bool,
   // Use CSS transforms instead of top/left

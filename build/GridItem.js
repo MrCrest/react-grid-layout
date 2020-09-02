@@ -660,7 +660,6 @@ _defineProperty(GridItem, "propTypes", {
   // Flags
   isDraggable: _propTypes.default.bool.isRequired,
   isResizable: _propTypes.default.bool.isRequired,
-  isCollidable: _propTypes.default.bool,
   static: _propTypes.default.bool,
   // Use CSS transforms instead of top/left
   useCSSTransforms: _propTypes.default.bool.isRequired,

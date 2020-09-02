@@ -100,7 +100,6 @@ function cloneLayoutItem(layoutItem
     // These can be null
     isDraggable: layoutItem.isDraggable,
     isResizable: layoutItem.isResizable,
-    isCollidable: layoutItem.isCollidable
   };
 }
 /**
@@ -134,8 +133,7 @@ function collides(l1
 )
 /*: boolean*/
 {
-  console.log('react-grid-layout', l1, l2);
-  if (l1.i === l2.i || l1.isCollidable || l2.isCollidable) return false; // same element
+  if (l1.i === l2.i || true) return false; // same element
 
   if (l1.x + l1.w <= l2.x) return false; // l1 is left of l2
 
@@ -249,6 +247,7 @@ function compactItem(compareWith
 )
 /*: LayoutItem*/
 {
+  return l;
   var compactV = compactType === "vertical";
   var compactH = compactType === "horizontal";
 
